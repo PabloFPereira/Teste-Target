@@ -1,0 +1,28 @@
+def calcular_faturamento(faturamento_diario):
+    # menor valor de faturamento ocorrido em um dia do mês
+    menor_faturamento = min(faturamento_diario)
+
+    # maior valor de faturamento ocorrido em um dia do mês
+    maior_faturamento = max(faturamento_diario)
+
+    # média mensal de faturamento diário
+    media_mensal = sum(faturamento_diario) / len(faturamento_diario)
+
+    # número de dias no mês em que o valor de faturamento diário foi superior à média mensal
+    dias_acima_da_media = sum(1 for valor in faturamento_diario if valor > media_mensal)
+
+    return menor_faturamento, maior_faturamento, dias_acima_da_media
+    
+# Lê a sequência de valores do usuário
+sequencia = input("Digite a sequência de valores separados por vírgula: ")
+
+# Converte a sequência em um vetor de faturamento
+faturamento_diario = [float(valor.strip()) for valor in sequencia.split(',')]
+
+# Chama a função calcular_faturamento para processar o vetor de faturamento
+menor_faturamento, maior_faturamento, dias_acima_da_media = calcular_faturamento(faturamento_diario)
+
+# Imprime os resultados
+print("Menor valor de faturamento diário:", menor_faturamento)
+print("Maior valor de faturamento diário:", maior_faturamento)
+print("Número de dias com faturamento acima da média mensal:", dias_acima_da_media)
