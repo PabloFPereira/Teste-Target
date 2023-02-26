@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class Distribuidora {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite o número de dias do mês: ");
+        int n = sc.nextInt();
+        
+        double[] faturamento = new double[n];
+        double total = 0;
+        
+        for (int i = 0; i < n; i++) {
+            System.out.print("Digite o faturamento do dia " + (i+1) + ": ");
+            faturamento[i] = sc.nextDouble();
+            total += faturamento[i];
+        }
+        sc.close();
+        
+        // menor faturamento diário
+        double menor = faturamento[0];
+        for (int i = 1; i < n; i++) {
+            if (faturamento[i] < menor) {
+                menor = faturamento[i];
+            }
+        }
+        System.out.println("Menor faturamento diário: " + menor);
+        
+        // maior faturamento diário
+        double maior = faturamento[0];
+        for (int i = 1; i < n; i++) {
+            if (faturamento[i] > maior) {
+                maior = faturamento[i];
+            }
+        }
+        System.out.println("Maior faturamento diário: " + maior);
+        
+        // média mensal
+        double media = total / n;
+        
+        // número de dias com faturamento acima da média
+        int acimaMedia = 0;
+        for (int i = 0; i < n; i++) {
+            if (faturamento[i] > media) {
+                acimaMedia++;
+            }
+        }
+        System.out.println("Número de dias com faturamento acima da média: " + acimaMedia);
+    }
+}
